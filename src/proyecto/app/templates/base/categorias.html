@@ -1,0 +1,47 @@
+{% extends 'base/index.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="ctg">
+<p id="nombre_usu">Hola!! {{request.user}}</p>
+<form action="{% url 'logout' %}" method="post" >
+  {% csrf_token %}
+  <button class="boton" type="submit">Salir</button>
+</form>
+{% else %}
+<p>No estas logueado aun...</p>
+<a href="{% url 'login' %}">Loguearse</a>
+{% endif %}
+</div>
+
+
+<h1 class="titulo_cat">Categorias</h1>
+
+<div class="index">
+
+    <table>
+        <tr>
+            <th>¿Qué deseas hacer?</th>
+            <th></th>
+        </tr>
+        <!-- Para que recorra y muestre todoo en pantalla-->
+        {% for tarea in categoria %}
+
+        <tr>
+            <td>{{tarea.name}}</td>
+            <td><a href="{% url 'citas' tarea.id %}">Clic</a></td>
+        </tr>
+
+        <!-- Si esta vacio-->
+        {% empty %}
+        <h3> No hay elementos en esta lista... </h3>
+
+        {% endfor %}
+
+
+    </table>
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,129 @@
+{% comment %} {% for i in range(100):%}
+    {{yield(i)}} {% endcomment %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Turno</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     
+        <style>
+            body {
+                background-color: #C99AEA;
+                font-family: "Protest Riot", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+                padding-top: 60px
+                 }
+            
+
+                 .container{
+                    max-width: 650px;
+                    margin: 0 auto;
+                    background-color: #E7F7FA;
+                    /**Sombra**/
+                    -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+                    box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+                    border-radius: 20px;
+                }
+
+                .titulo, 
+                .boton_tur{
+                    text-align: center;
+                    background-color: #AA23E1;
+                    text-transform: uppercase;
+                    font-weight: bold;
+
+                 }
+
+                 .boton_tur{
+                    
+                    border: 1px solid #AA23E1;
+                    border-radius: 10px;
+                    padding: 5px;
+                    margin-top: 30px;
+                    font-size:20px;
+                    margin-left: 230px;
+
+                 }
+
+
+                .result{
+                    margin-top: 20px;
+                    margin-bottom:30px;
+                    font-size:60px;
+                    margin-left: 280px;
+
+                }
+
+                .sen{
+                    text-align: center;
+                    text-transform: uppercase;
+                    font-size:30px;
+                    font-weight: bold;
+                }
+
+                .prueba{ 
+                    display:flex;
+                    justify-content:center;
+                    align-text: center;  
+                    padding-bottom: 30px;
+
+
+                }
+                a{
+                    text-decoration: none;
+                    font-size: 30px;
+                }
+        
+        </style>
+    
+    
+    
+    
+    </head>
+    <body>
+        
+        <div class="container">
+            <h1 class=titulo>Turno</h1>
+            
+                    <div class="">
+                        <button id="generar-turno" class="boton_tur">Generar Turno</button>  
+                    <div>
+                        <p class="sen">Su turno es:</p>
+                <div id="secuencia" class="result">{{ turno_actual }}</div>
+               
+        
+            <script>
+                $(document).ready(function(){
+                    $('#generar-turno').click(function(e){
+                        e.preventDefault(); // Evitar que el formulario se envíe
+        
+                        // Realizar una solicitud POST al mismo URL
+                        $.ajax({
+                            type: 'POST',
+                            url: '/turnero/', // URL de la vista de Django que maneja el turno
+                            beforeSend: function(xhr) {
+                                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}"); // Configurar el token CSRF
+                            },
+                            success: function(response){
+                                $('#secuencia').text(response.turno); // Actualizar el número del turno
+                            },
+                            error: function(xhr, status, error){
+                                console.error(xhr.responseText);
+                            }
+                        });
+                    });
+                });
+            </script>
+    </div>
+    <div class="prueba">
+        <a href="{% url 'prueba' %}">Volver</a>
+        <div>
+    </body>
+    </html>

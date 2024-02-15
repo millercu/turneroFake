@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de pendientes</title>
+
+    <!-- fuente -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+             background-color: #C99AEA;
+             font-family: "Protest Riot", sans-serif;
+             font-weight: 400;
+             font-style: normal;
+             padding-top: 60px
+              }
+
+        .container{
+            max-width: 650px;
+            margin: auto;
+            background-color: #E7F7FA;
+            /**Sombra**/
+            -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+            box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+            border-radius: 20px;
+        }
+
+        .titulo, 
+        .boton,
+        #nombre_usu{
+            text-align: center;
+            background-color: #AA23E1;
+            text-transform: uppercase;
+            font-weight: bold;
+
+        }
+
+        .titulo_cat{
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .boton{
+            border: 1px solid #AA23E1;
+            border-radius: 10px;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        .boton:hover{
+           cursor: pointer;
+        }
+
+        .ingresar {
+           display: block;
+           justify-content: center;
+           margin-left: 160px;
+           padding-bottom: 10px;
+        }
+
+        #p_login{
+            padding-bottom:10px;
+        }
+
+        .ctg{
+            display:flex;
+            justify-content: space-between;
+            background-color: #AA23E1;
+        }
+
+        .index{
+            display:flex;
+            justify-content:center;
+            padding:20px;
+        }
+
+        input[type=text],
+        input[type=password]{
+            border: 1px solid #DD8CFE;
+            border-radius: 5px;
+            padding: 10px;
+            width: 90%;
+        }
+
+        label {
+            padding-top: 10px !important;
+            display: block;
+        }
+
+
+        .barra-superior{
+           display: flex;
+           justify-content: space-between;
+           padding: 10px;
+           background: linear-gradient(90deg, #4D9FE3 0%, #3A8ACC 43%, #3A8ACC 100%);
+
+        }
+
+        a{
+         color: #AE13ED;
+         font-weight: bold;
+         text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+         <!-- Bloque de contenido -->
+         {% block content %}
+
+
+         {% endblock content %}
+
+    </div>
+
+</body>
+</html>

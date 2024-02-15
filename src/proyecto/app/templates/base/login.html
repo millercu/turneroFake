@@ -1,0 +1,22 @@
+{% extends 'base/index.html' %}
+
+{% block content %}
+<h1 class="titulo">Ingresar</h1>
+
+<div class="ingresar">
+    
+    <form method="POST">
+            <!-- Seguridad -->
+        {% csrf_token %}
+            <!-- Muestra el formulario como parrafo -->
+        {{ form.as_p }}
+
+        <input type="submit" value="Ingresar" class="boton">
+
+    </form>
+
+    <p id="p_login">No tienes cuenta? <a href="{% url 'registro' %}">Registrate gratis</a></p>
+
+</div>
+
+{% endblock content %}
